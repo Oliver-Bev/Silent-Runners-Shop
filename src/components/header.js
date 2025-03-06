@@ -2,6 +2,9 @@
 
 import { useState } from "react"
 import "../styles/header.css"
+import { ReactComponent as Logotext } from "../assets/logotext.svg";
+import { ReactComponent as Logoiconblack } from "../assets/logoiconblack.svg";
+import { ReactComponent as Logoiconwhite} from "../assets/logoiconwhite.svg";
 import { Search, CircleUserRound, ShoppingCart, Menu, X } from "lucide-react"
 
 const Header = () => {
@@ -15,7 +18,8 @@ const Header = () => {
     <div className="header-wrapper">
       <div className="header">
         <div className="logo">
-          <img src="/path-to-your-logo.png" alt="Logo" />
+          <Logotext className="logotextsvg"/>
+          <Logoiconwhite className="logoiconsvg"/>
         </div>
         <div className="content">
           <ul>
