@@ -19,8 +19,8 @@ const Header = () => {
     <div className="header-wrapper">
       <div className="header">
         <div className="logo">
-          <Logotextwhite className="logotextsvg"/>
-          <Logoiconwhite className="logoiconsvg"/>
+          <Logotextblack className="logotextsvg"/>
+          <Logoiconblack className="logoiconsvg"/>
         </div>
         <div className="content">
           <ul>
