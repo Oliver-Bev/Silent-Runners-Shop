@@ -2,7 +2,8 @@
 
 import { useState } from "react"
 import "../styles/header.css"
-import { ReactComponent as Logotext } from "../assets/logotext.svg";
+import { ReactComponent as Logotextwhite } from "../assets/logotextwhite.svg";
+import { ReactComponent as Logotextblack } from "../assets/logotextwhite.svg";
 import { ReactComponent as Logoiconblack } from "../assets/logoiconblack.svg";
 import { ReactComponent as Logoiconwhite} from "../assets/logoiconwhite.svg";
 import { Search, CircleUserRound, ShoppingCart, Menu, X } from "lucide-react"
@@ -18,7 +19,7 @@ const Header = () => {
     <div className="header-wrapper">
       <div className="header">
         <div className="logo">
-          <Logotext className="logotextsvg"/>
+          <Logotextwhite className="logotextsvg"/>
           <Logoiconwhite className="logoiconsvg"/>
         </div>
         <div className="content">
