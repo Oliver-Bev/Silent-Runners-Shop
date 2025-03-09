@@ -1,18 +1,74 @@
 "use client"
 
-import { useState } from "react"
+import { useState, useRef, useEffect } from "react"
 import "../styles/header.css"
 import { ReactComponent as Logotextwhite } from "../assets/logotextwhite.svg";
 import { ReactComponent as Logotextblack } from "../assets/logotextwhite.svg";
 import { ReactComponent as Logoiconblack } from "../assets/logoiconblack.svg";
 import { ReactComponent as Logoiconwhite} from "../assets/logoiconwhite.svg";
-import { Search, CircleUserRound, ShoppingCart, Menu, X } from "lucide-react"
+import { Search, CircleUserRound, ShoppingCart, Menu, X } from 'lucide-react'
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
+  const [isSearchOpen, setIsSearchOpen] = useState(false)
+  const searchInputRef = useRef(null)
+  const mobileSearchInputRef = useRef(null)
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen)
+    // Close search when opening menu
+    if (!isMenuOpen) setIsSearchOpen(false)
+  }
+
+  const toggleSearch = () => {
+    setIsSearchOpen(!isSearchOpen)
+    // Close menu when opening search on mobile
+    if (!isSearchOpen && window.innerWidth <= 840) {
+      setIsMenuOpen(false)
+    }
+  }
+
+  // Focus the appropriate search input when search opens
+  useEffect(() => {
+    if (isSearchOpen) {
+      if (window.innerWidth <= 840) {
+        if (mobileSearchInputRef.current) {
+          mobileSearchInputRef.current.focus()
+        }
+      } else if (searchInputRef.current) {
+        searchInputRef.current.focus()
+      }
+    }
+  }, [isSearchOpen])
+
+  // Close search on click outside
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (
+        isSearchOpen &&
+        !event.target.closest('.search-container') &&
+        !event.target.closest('.mobile-search-overlay') &&
+        !event.target.closest('.search-button')
+      ) {
+        setIsSearchOpen(false)
+      }
+    }
+
+    document.addEventListener('mousedown', handleClickOutside)
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside)
+    }
+  }, [isSearchOpen])
+
+  const handleSearchSubmit = (e) => {
+    e.preventDefault()
+    // Handle search submission
+    const searchValue = window.innerWidth <= 840 
+      ? mobileSearchInputRef.current?.value 
+      : searchInputRef.current?.value
+    
+    console.log("Search submitted:", searchValue)
+    setIsSearchOpen(false)
   }
 
   return (
@@ -42,9 +98,26 @@ const Header = () => {
           </ul>
         </div>
         <div className="icons">
-          <button className="icon-button">
-            <Search />
-          </button>
+          <div className="search-container">
+            <button 
+              className="icon-button search-button" 
+              onClick={toggleSearch}
+              aria-label="Search"
+            >
+              {isSearchOpen ? <X size={24} /> : <Search size={24} />}
+            </button>
+            <form 
+              className={`search-form ${isSearchOpen ? 'open' : ''}`}
+              onSubmit={handleSearchSubmit}
+            >
+              <input
+                ref={searchInputRef}
+                type="text"
+                placeholder="Szukaj produktów..."
+                className="search-input"
+              />
+            </form>
+          </div>
           <button className="icon-button">
             <CircleUserRound />
           </button>
@@ -56,6 +129,31 @@ const Header = () => {
           </button>
         </div>
       </div>
+
+      {/* Mobile search overlay */}
+      <div className={`mobile-search-overlay ${isSearchOpen ? 'open' : ''}`}>
+        <form onSubmit={handleSearchSubmit}>
+          <div className="mobile-search-container">
+            <input
+              ref={mobileSearchInputRef}
+              type="text"
+              placeholder="Szukaj produktów..."
+              className="mobile-search-input"
+            />
+            <button type="submit" className="mobile-search-button">
+              <Search size={20} />
+            </button>
+            <button 
+              type="button" 
+              className="mobile-search-close"
+              onClick={() => setIsSearchOpen(false)}
+            >
+              <X size={20} />
+            </button>
+          </div>
+        </form>
+      </div>
+
       <nav className={`mobile-menu ${isMenuOpen ? "open" : ""}`}>
         <ul>
           <li>
@@ -90,4 +188,3 @@ const Header = () => {
 }
 
 export default Header
-
