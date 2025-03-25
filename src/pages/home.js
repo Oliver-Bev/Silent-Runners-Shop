@@ -2,12 +2,14 @@
 
 import { useEffect, useState } from "react"
 import "../styles/home.css"
+
 import dunkBlueImage from "../assets/img/DunkBlue.png"
 import jordanRedImage from "../assets/img/Jordan1low.png"
 import jordanWhiteImage from "../assets/img/Jordan4.png"
 import airMax from "../assets/img/AirMax.png"
 import dunkJerry from "../assets/img/DunkJerry.png"
-
+import blazer from "../assets/img/Blazer.png"
+import airforce from "../assets/img/AirForceBlack.png"
 const Home = () => {
   const [isLoaded, setIsLoaded] = useState(false)
   const [currentSlide, setCurrentSlide] = useState(0)
@@ -56,16 +58,16 @@ const Home = () => {
     },
   ]
 
-  // Sample product data
+
   const products = [
     { id: 1, name: "Nike Dunk Low", price: "499 zł", image: dunkBlueImage },
-    { id: 2, name: "Air Force 1 '07", price: "549 zł", image: "/placeholder.svg?height=300&width=300" },
+    { id: 2, name: "Air Force 1 '07", price: "549 zł", image: airforce },
     { id: 3, name: "Jordan 1 Low", price: "599 zł", image: jordanRedImage },
-    { id: 4, name: "Nike SB Dunk BenDunk Low SB x Ben & Jerry’s ", price: "479 zł", image: dunkJerry },
+    { id: 4, name: "Nike SB Dunk BenDunk Low SB x Ben & Jerry’s ", price: "9999,99 zł", image: dunkJerry },
     { id: 5, name: "Air Max Plus", price: "649 zł", image: airMax },
-    { id: 6, name: "Nike Blazer", price: "399 zł", image: "/placeholder.svg?height=300&width=300" },
+    { id: 6, name: "Nike Blazer", price: "399 zł", image: blazer },
     { id: 7, name: "Air Jordan 4", price: "899 zł", image: jordanWhiteImage },
-    { id: 8, name: "Nike Cortez", price: "429 zł", image: "" },
+
   ]
 
   return (

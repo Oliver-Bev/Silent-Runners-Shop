@@ -16,15 +16,37 @@ body {
   padding: 0;
   font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
   background-color: var(--color-background);
+  /* Prevent content jumps */
+  overflow-x: hidden;
+  /* Force light mode */
+  color-scheme: light;
+}
+
+/* Main container - adjust padding and spacing */
+.main-container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--color-background);
+  position: relative;
+  overflow: hidden;
+  /* Remove any default spacing */
+  gap: 0;
 }
 
 .shoe-container {
   width: 100%;
-  min-height: 100vh;
+  height: 100vh; /* Fixed height instead of min-height */
   display: flex;
   justify-content: center;
   align-items: center;
-  overflow: hidden;
+  position: relative;
+  z-index: 1;
+  /* Reduce top padding to minimize gap from header */
+  padding-top: 0;
+  /* Reduce bottom padding to bring next section closer */
+  padding-bottom: 0;
+  margin: 0;
 }
 
 .slider-container {
@@ -248,21 +270,26 @@ body {
   transform: translateX(0);
 }
 
-#new-products-text{
+#new-products-text {
   display: flex;
   font-size: 2rem;
   justify-content: center;
-  margin-bottom: 10px;
+  /* Reduce margins to bring closer to sections above and below */
+  margin: 20px 0 10px 0;
+  padding: 0 20px;
+  text-align: center;
 }
 
-
-
-/* New Products Section - FIXED VERSION */
+/* New Products Section - reduce spacing */
 .new-products {
   width: 100%;
-  padding: 40px 0;
+  /* Reduce padding to bring closer to section above */
+  padding: 20px 0 40px 0;
   position: relative;
   overflow: hidden;
+  background-color: var(--color-background);
+  z-index: 2;
+  margin-top: 0;
 }
 
 /* New track container for products */
@@ -290,6 +317,7 @@ body {
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   background-color: white;
   flex-shrink: 0; /* Prevent shrinking */
+  cursor: pointer;
 }
 
 .product-top {
@@ -332,33 +360,27 @@ body {
   color: #333;
 }
 
-/* Responsive styles */
+
+/* Adjust mobile spacing */
 @media (max-width: 768px) {
-  .product {
-    width: 220px;
-    margin-right: 15px;
+  .shoe-container {
+    height: auto;
+    min-height: 75vh; /* Slightly reduce height on mobile */
+    padding: 10px 0; /* Reduce padding further on mobile */
   }
 
-  .product-title {
-    font-size: 14px;
-  }
-}
-
-@media (max-width: 480px) {
-  .product {
-    width: 180px;
-    margin-right: 12px;
-  }
-
-  .product-bottom {
-    padding: 8px;
-  }
-}
-
-@media (max-width: 768px) {
   .slider-container {
-    height: 60dvh;
-    margin-top: -25dvh;
+    height: 60vh;
+    margin-top: 0;
+  }
+
+  .new-products {
+    margin-top: 0;
+    padding-top: 10px;
+  }
+
+  #new-products-text {
+    margin: 10px 0 5px 0;
   }
 
   .shoe-content {
