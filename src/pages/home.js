@@ -76,7 +76,7 @@ const Home = () => {
     const [isExpired, setIsExpired] = useState(false);
     
     // Ustawienie daty docelowej (np. 30 kwietnia 2025, 12:00)
-    const targetDate = new Date('2025-04-28T00:00:01').getTime();
+    const targetDate = new Date('2025-03-28T00:00:01').getTime();
     
     useEffect(() => {
       // Funkcja do obliczania pozostałego czasu
@@ -241,9 +241,6 @@ const Home = () => {
         </div>
       </div>
 
-
-      {/* TRZEBA ZROBIC DO TEGO STYLE RESPONSYWE */}
-
       <div className="drop">
         <div className="drop-text">
           Premiera Air Jordan x Dior
@@ -253,8 +250,6 @@ const Home = () => {
           Więcej informacji<CircleArrowRight className="arrow" />
         </button>
       </div>
-
-      
     </>
   );
 };
