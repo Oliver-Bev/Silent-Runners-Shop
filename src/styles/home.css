@@ -16,13 +16,10 @@ body {
   padding: 0;
   font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
   background-color: var(--color-background);
-  /* Prevent content jumps */
   overflow-x: hidden;
-  /* Force light mode */
   color-scheme: light;
 }
 
-/* Main container - adjust padding and spacing */
 .main-container {
   width: 100%;
   display: flex;
@@ -30,7 +27,7 @@ body {
   background-color: var(--color-background);
   position: relative;
   overflow: hidden;
-  /* Remove any default spacing */
+
   gap: 0;
 }
 
@@ -38,20 +35,20 @@ body {
   width: 100%;
   height: 80vh;
   display: flex;
-  justify-content: center; /* Możesz zmienić na flex-start jeśli chcesz, aby slider był wyrównany do lewej */
+  justify-content: center; 
   align-items: center;
   position: relative;
   z-index: 1;
   padding: 0;
   margin: 0;
-  box-sizing: border-box; /* Dodane, aby padding nie zwiększał szerokości */
-  overflow: hidden; /* Zapobiega przewijaniu poziomemu */
+  box-sizing: border-box; 
+  overflow: hidden; 
 }
 
 .slider-container {
   position: relative;
-  width: 100%; /* Pełna szerokość */
-  max-width: 100%; /* Zmienione z 1400px na 100% */
+  width: 100%;
+  max-width: 100%; 
   height: 70vh;
   overflow: hidden;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
@@ -272,16 +269,13 @@ body {
   display: flex;
   font-size: 2rem;
   justify-content: center;
-  /* Reduce margins to bring closer to sections above and below */
   margin: 20px 0 10px 0;
   padding: 0 20px;
   text-align: center;
 }
 
-/* New Products Section - reduce spacing */
 .new-products {
   width: 100%;
-  /* Reduce padding to bring closer to section above */
   padding: 20px 0 40px 0;
   position: relative;
   overflow: hidden;
@@ -290,7 +284,6 @@ body {
   margin-top: 0;
 }
 
-/* New track container for products */
 .products-track {
   display: flex;
   width: max-content;
@@ -303,18 +296,18 @@ body {
     transform: translateX(0);
   }
   100% {
-    transform: translateX(-50%); /* Only move by half to create seamless loop */
+    transform: translateX(-50%); 
   }
 }
 
 .product {
-  width: 280px; /* Fixed width */
+  width: 280px; 
   margin-right: 20px;
   border-radius: 8px;
   overflow: hidden;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   background-color: white;
-  flex-shrink: 0; /* Prevent shrinking */
+  flex-shrink: 0; 
   cursor: pointer;
 }
 
@@ -331,7 +324,7 @@ body {
 .product-image {
   width: 100%;
   height: 100%;
-  object-fit: contain; /* Changed to contain to show full shoe */
+  object-fit: contain;
   object-position: center;
   transition: transform 0.3s ease;
 }
@@ -358,14 +351,13 @@ body {
   color: #333;
 }
 
-/* Responsive styles for the drop section */
 .drop {
   width: 100%;
   height: 80dvh;
   background-image: url(../assets/img/jordaDior.png);
   background-position: center;
   background-repeat: no-repeat;
-  background-size: cover; /* Changed to cover for better responsiveness */
+  background-size: cover; 
   position: relative;
   display: flex;
   justify-content: center;
@@ -386,8 +378,8 @@ body {
 .drop-text {
   color: white;
   z-index: 20;
-  position: relative; /* Changed from absolute for better responsiveness */
-  font-size: clamp(24px, 5vw, 40px); /* Responsive font size */
+  position: relative; 
+  font-size: clamp(24px, 5vw, 40px); 
   max-width: 90%;
   display: flex;
   flex-direction: column;
@@ -420,18 +412,16 @@ body {
   margin-left: 5px;
 }
 
-/* Timer Display Styles */
 .drop-text > div {
   font-size: clamp(16px, 3vw, 24px);
   font-weight: 500;
 }
 
-/* Adjust mobile spacing */
 @media (max-width: 768px) {
   .shoe-container {
     height: auto;
-    min-height: 75vh; /* Slightly reduce height on mobile */
-    padding: 10px 0; /* Reduce padding further on mobile */
+    min-height: 75vh; 
+    padding: 10px 0; 
   }
 
   .slider-container {
@@ -495,8 +485,7 @@ body {
     border: 1px solid rgba(0, 0, 0, 0.1);
     margin-bottom: 100px;
   }
-  
-  /* Responsive styles for drop section */
+
   .drop {
     height: 70dvh;
   }
@@ -528,8 +517,7 @@ body {
     width: 36px;
     height: 36px;
   }
-  
-  /* Responsive styles for drop section */
+
   .drop {
     height: 60dvh;
   }
@@ -547,7 +535,6 @@ body {
   }
 }
 
-/* For very small screens */
 @media (max-width: 360px) {
   .button-drop {
     right: 50%;

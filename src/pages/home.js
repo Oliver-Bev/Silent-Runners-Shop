@@ -75,16 +75,16 @@ const Home = () => {
     const [isLoading, setIsLoading] = useState(true);
     const [isExpired, setIsExpired] = useState(false);
     
-    // Ustawienie daty docelowej (np. 30 kwietnia 2025, 12:00)
-    const targetDate = new Date('2025-03-28T00:00:01').getTime();
+
+    const targetDate = new Date('2025-04-28T00:00:01').getTime();
     
     useEffect(() => {
-      // Funkcja do obliczania pozostałego czasu
+
       const calculateTimeRemaining = () => {
         const now = new Date().getTime();
         const difference = targetDate - now;
         
-        // Jeśli data docelowa już minęła, ustaw flagę wygaśnięcia
+
         if (difference <= 0) {
           setIsExpired(true);
           return 0;
@@ -93,13 +93,12 @@ const Home = () => {
         return difference;
       };
       
-      // Inicjalizacja stanu
+
       const initialTimeRemaining = calculateTimeRemaining();
       setTimeRemaining(initialTimeRemaining);
       setIsExpired(initialTimeRemaining <= 0);
       setIsLoading(false);
-      
-      // Ustawienie interwału do aktualizacji czasu co sekundę
+
       const interval = setInterval(() => {
         const newTimeRemaining = calculateTimeRemaining();
         setTimeRemaining(newTimeRemaining);
@@ -108,12 +107,10 @@ const Home = () => {
           clearInterval(interval);
         }
       }, 1000);
-      
-      // Czyszczenie interwału przy odmontowaniu komponentu
+
       return () => clearInterval(interval);
     }, []);
-    
-    // Konwersja milisekund na dni, godziny, minuty i sekundy
+
     const days = Math.floor(timeRemaining / (1000 * 60 * 60 * 24));
     const hours = Math.floor((timeRemaining % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
     const minutes = Math.floor((timeRemaining % (1000 * 60 * 60)) / (1000 * 60));
@@ -213,7 +210,7 @@ const Home = () => {
       <div className="new-products">
         <a id="new-products-text">Nasze Nowości</a>
         <div className="products-track">
-          {/* First set of products */}
+
           {products.map((product) => (
             <div key={product.id} className="product">
               <div className="product-top">
@@ -226,7 +223,7 @@ const Home = () => {
             </div>
           ))}
 
-          {/* Duplicate set for infinite scroll effect */}
+
           {products.map((product) => (
             <div key={`dup-${product.id}`} className="product">
               <div className="product-top">
