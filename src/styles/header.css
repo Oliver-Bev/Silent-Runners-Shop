@@ -6,6 +6,15 @@ body {
   font-family: Arial, sans-serif;
 }
 
+.logo-link {
+  text-decoration: none;
+  display: inline-block;
+  cursor: pointer;
+  height: 100%;
+
+}
+
+
 .header-wrapper {
   position: sticky;
   top: 0;

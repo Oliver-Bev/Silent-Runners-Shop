@@ -1,7 +1,9 @@
+
 "use client";
 
 import { useEffect, useState, useRef } from "react";
 import "../styles/home.css";
+
 
 import dunkBlueImage from "../assets/img/DunkBlue.png";
 import jordanRedImage from "../assets/img/Jordan1low.png";
@@ -11,6 +13,7 @@ import dunkJerry from "../assets/img/DunkJerry.png";
 import blazer from "../assets/img/Blazer.png";
 import airforce from "../assets/img/AirForceBlack.png";
 import { CircleArrowRight } from 'lucide-react';
+import Footer from "../components/footer";
 
 const Home = () => {
   const [isLoaded, setIsLoaded] = useState(false);
@@ -247,6 +250,8 @@ const Home = () => {
           Więcej informacji<CircleArrowRight className="arrow" />
         </button>
       </div>
+
+    
     </>
   );
 };
