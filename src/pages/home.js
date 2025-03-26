@@ -1,42 +1,43 @@
-"use client"
+"use client";
 
-import { useEffect, useState } from "react"
-import "../styles/home.css"
+import { useEffect, useState, useRef } from "react";
+import "../styles/home.css";
 
-import dunkBlueImage from "../assets/img/DunkBlue.png"
-import jordanRedImage from "../assets/img/Jordan1low.png"
-import jordanWhiteImage from "../assets/img/Jordan4.png"
-import airMax from "../assets/img/AirMax.png"
-import dunkJerry from "../assets/img/DunkJerry.png"
-import blazer from "../assets/img/Blazer.png"
-import airforce from "../assets/img/AirForceBlack.png"
-import { CircleArrowRight  } from 'lucide-react';
+import dunkBlueImage from "../assets/img/DunkBlue.png";
+import jordanRedImage from "../assets/img/Jordan1low.png";
+import jordanWhiteImage from "../assets/img/Jordan4.png";
+import airMax from "../assets/img/AirMax.png";
+import dunkJerry from "../assets/img/DunkJerry.png";
+import blazer from "../assets/img/Blazer.png";
+import airforce from "../assets/img/AirForceBlack.png";
+import { CircleArrowRight } from 'lucide-react';
+
 const Home = () => {
-  const [isLoaded, setIsLoaded] = useState(false)
-  const [currentSlide, setCurrentSlide] = useState(0)
-  const totalSlides = 3
+  const [isLoaded, setIsLoaded] = useState(false);
+  const [currentSlide, setCurrentSlide] = useState(0);
+  const totalSlides = 3;
 
   useEffect(() => {
-    setIsLoaded(true)
+    setIsLoaded(true);
 
     const interval = setInterval(() => {
-      setCurrentSlide((prev) => (prev === totalSlides - 1 ? 0 : prev + 1))
-    }, 4000)
+      setCurrentSlide((prev) => (prev === totalSlides - 1 ? 0 : prev + 1));
+    }, 4000);
 
-    return () => clearInterval(interval)
-  }, [])
+    return () => clearInterval(interval);
+  }, []);
 
   const nextSlide = () => {
-    setCurrentSlide((prev) => (prev === totalSlides - 1 ? 0 : prev + 1))
-  }
+    setCurrentSlide((prev) => (prev === totalSlides - 1 ? 0 : prev + 1));
+  };
 
   const prevSlide = () => {
-    setCurrentSlide((prev) => (prev === 0 ? totalSlides - 1 : prev - 1))
-  }
+    setCurrentSlide((prev) => (prev === 0 ? totalSlides - 1 : prev - 1));
+  };
 
   const goToSlide = (index) => {
-    setCurrentSlide(index)
-  }
+    setCurrentSlide(index);
+  };
 
   const slides = [
     {
@@ -57,21 +58,81 @@ const Home = () => {
       primaryButton: "Przeglądaj buty Jordan",
       secondaryButton: "Poznaj inne modele Jordan",
     },
-  ]
-
-
-
+  ];
 
   const products = [
     { id: 1, name: "Nike Dunk Low", price: "499 zł", image: dunkBlueImage },
     { id: 2, name: "Air Force 1 '07", price: "549 zł", image: airforce },
     { id: 3, name: "Jordan 1 Low", price: "599 zł", image: jordanRedImage },
-    { id: 4, name: "Nike SB Dunk BenDunk Low SB x Ben & Jerry’s ", price: "9999,99 zł", image: dunkJerry },
+    { id: 4, name: "Nike SB Dunk BenDunk Low SB x Ben & Jerry's ", price: "9999,99 zł", image: dunkJerry },
     { id: 5, name: "Air Max Plus", price: "649 zł", image: airMax },
     { id: 6, name: "Nike Blazer", price: "399 zł", image: blazer },
     { id: 7, name: "Air Jordan 4", price: "899 zł", image: jordanWhiteImage },
+  ];
 
-  ]
+  function TimerDisplay() {
+    const [timeRemaining, setTimeRemaining] = useState(0);
+    const [isLoading, setIsLoading] = useState(true);
+    const [isExpired, setIsExpired] = useState(false);
+    
+    // Ustawienie daty docelowej (np. 30 kwietnia 2025, 12:00)
+    const targetDate = new Date('2025-04-28T00:00:01').getTime();
+    
+    useEffect(() => {
+      // Funkcja do obliczania pozostałego czasu
+      const calculateTimeRemaining = () => {
+        const now = new Date().getTime();
+        const difference = targetDate - now;
+        
+        // Jeśli data docelowa już minęła, ustaw flagę wygaśnięcia
+        if (difference <= 0) {
+          setIsExpired(true);
+          return 0;
+        }
+        
+        return difference;
+      };
+      
+      // Inicjalizacja stanu
+      const initialTimeRemaining = calculateTimeRemaining();
+      setTimeRemaining(initialTimeRemaining);
+      setIsExpired(initialTimeRemaining <= 0);
+      setIsLoading(false);
+      
+      // Ustawienie interwału do aktualizacji czasu co sekundę
+      const interval = setInterval(() => {
+        const newTimeRemaining = calculateTimeRemaining();
+        setTimeRemaining(newTimeRemaining);
+        if (newTimeRemaining <= 0) {
+          setIsExpired(true);
+          clearInterval(interval);
+        }
+      }, 1000);
+      
+      // Czyszczenie interwału przy odmontowaniu komponentu
+      return () => clearInterval(interval);
+    }, []);
+    
+    // Konwersja milisekund na dni, godziny, minuty i sekundy
+    const days = Math.floor(timeRemaining / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((timeRemaining % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const minutes = Math.floor((timeRemaining % (1000 * 60 * 60)) / (1000 * 60));
+    const seconds = Math.floor((timeRemaining % (1000 * 60)) / 1000);
+    
+    if (isLoading) {
+      return <div>Ładowanie...</div>;
+    }
+    
+    if (isExpired) {
+      return <div>Premiera już dostępna</div>;
+    }
+    
+    return (
+      <div>
+        {days} dni, {hours} godzin, {minutes} minut, {seconds} sekund
+      </div>
+    );
+  }
 
   return (
     <>
@@ -180,14 +241,22 @@ const Home = () => {
         </div>
       </div>
 
+
+      {/* TRZEBA ZROBIC DO TEGO STYLE RESPONSYWE */}
+
       <div className="drop">
-      <button className="button-drop">
-              Więcej informacji<CircleArrowRight className="arrow"/>
-      </button>
+        <div className="drop-text">
+          Premiera Air Jordan x Dior
+          <TimerDisplay />
+        </div>
+        <button className="button-drop">
+          Więcej informacji<CircleArrowRight className="arrow" />
+        </button>
       </div>
+
+      
     </>
-  )
-}
+  );
+};
 
-export default Home
-
+export default Home;

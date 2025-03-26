@@ -368,6 +368,10 @@ body {
   background-repeat: no-repeat;
   background-size: calc();
   position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
 }
 
 .drop::before {
@@ -398,6 +402,15 @@ body {
 
 .arrow{
   margin-left: 5px;
+}
+
+
+.drop-text{
+  color: white;
+  z-index: 20;
+  position: absolute;
+  font-size: 40px;
+  
 }
 
 
