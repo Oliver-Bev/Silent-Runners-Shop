@@ -12,6 +12,15 @@ body {
   z-index: 1000;
 }
 
+.logotextsvg path,
+.logotextsvg rect,
+.logotextsvg circle,
+.logotextsvg polygon,
+.logotextsvg ellipse {
+  fill: black !important;
+  stroke: none !important;
+}
+
 .header {
   display: flex;
   justify-content: space-between;

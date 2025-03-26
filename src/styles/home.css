@@ -36,26 +36,24 @@ body {
 
 .shoe-container {
   width: 100%;
-  height: 80vh; /* Fixed height instead of min-height */
+  height: 80vh;
   display: flex;
-  justify-content: center;
+  justify-content: center; /* Możesz zmienić na flex-start jeśli chcesz, aby slider był wyrównany do lewej */
   align-items: center;
   position: relative;
   z-index: 1;
-  /* Reduce top padding to minimize gap from header */
-  padding-top: 0;
-  /* Reduce bottom padding to bring next section closer */
-  padding-bottom: 0;
+  padding: 0;
   margin: 0;
+  box-sizing: border-box; /* Dodane, aby padding nie zwiększał szerokości */
+  overflow: hidden; /* Zapobiega przewijaniu poziomemu */
 }
 
 .slider-container {
   position: relative;
-  width: 100%;
-  max-width: 1400px;
+  width: 100%; /* Pełna szerokość */
+  max-width: 100%; /* Zmienione z 1400px na 100% */
   height: 70vh;
   overflow: hidden;
- 
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
 }
 
