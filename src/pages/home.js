@@ -10,6 +10,7 @@ import airMax from "../assets/img/AirMax.png"
 import dunkJerry from "../assets/img/DunkJerry.png"
 import blazer from "../assets/img/Blazer.png"
 import airforce from "../assets/img/AirForceBlack.png"
+import { CircleArrowRight  } from 'lucide-react';
 const Home = () => {
   const [isLoaded, setIsLoaded] = useState(false)
   const [currentSlide, setCurrentSlide] = useState(0)
@@ -57,6 +58,8 @@ const Home = () => {
       secondaryButton: "Poznaj inne modele Jordan",
     },
   ]
+
+
 
 
   const products = [
@@ -175,6 +178,12 @@ const Home = () => {
             </div>
           ))}
         </div>
+      </div>
+
+      <div className="drop">
+      <button className="button-drop">
+              Więcej informacji<CircleArrowRight className="arrow"/>
+      </button>
       </div>
     </>
   )
