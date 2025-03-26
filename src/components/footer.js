@@ -19,7 +19,7 @@ const Footer = () => {
             </ul>
           </div>
           
-          <div className="footer-column">
+          {/* <div className="footer-column">
             <h3 className="footer-title">Kolekcje</h3>
             <ul className="footer-links">
               <li><a href="/jordan">Jordan</a></li>
@@ -28,7 +28,7 @@ const Footer = () => {
               <li><a href="/airmax">Air Max</a></li>
               <li><a href="/blazer">Blazer</a></li>
             </ul>
-          </div>
+          </div> */}
           
           <div className="footer-column">
             <h3 className="footer-title">Pomoc</h3>
