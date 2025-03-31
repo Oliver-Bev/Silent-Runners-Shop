@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { ChevronDown, ChevronLeft, ChevronRight, Filter, X } from 'lucide-react';
-import '../styles/men.css';
-import testphoto from '../assets/img/stupid.png';
+import '../../styles/shop.css';
+import testphoto from '../../assets/img/stupid.png';
 // Sample product data - in a real app, this would come from an API
 const sampleProducts = Array.from({ length: 50 }, (_, i) => ({
   id: i + 1,
-  name: `Produkt męski ${i + 1}`,
+  name: `Odzież męska ${i + 1}`,
   price: Math.floor(Math.random() * 400) + 99,
   color: ['czarny', 'biały', 'niebieski', 'szary', 'czerwony'][Math.floor(Math.random() * 5)],
   size: ['S', 'M', 'L', 'XL', 'XXL'][Math.floor(Math.random() * 5)],

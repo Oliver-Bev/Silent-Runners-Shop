@@ -2,7 +2,8 @@
 import { useState, useRef, useEffect } from "react"
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import "../styles/header.css"
-import Men from "../pages/men"
+import Shoes from "../pages/men/shoes"
+import Clothes from "../pages/men/clothes"
 import { ReactComponent as Logotextwhite } from "../assets/logotextwhite.svg";
 import { ReactComponent as Logotextblack } from "../assets/logotextwhite.svg";
 import { ReactComponent as Logoiconblack } from "../assets/logoiconblack.svg";
@@ -174,7 +175,7 @@ const Header = () => {
     "men-buty": {
       title: "Buty",
       items: [
-        { label: "Wszystkie buty", link: "/men/buty" },
+        { label: "Wszystkie buty", link: "/men/shoes" },
         { label: "Lifestyle", link: "/men/buty/lifestyle" },
         { label: "Jordan", link: "/men/buty/jordan" },
         { label: "Bieganie", link: "/men/buty/bieganie" },
@@ -188,7 +189,7 @@ const Header = () => {
     "men-ubrania": {
       title: "Ubrania",
       items: [
-        { label: "Wszystkie ubrania", link: "/men/ubrania" },
+        { label: "Wszystkie ubrania", link: "/men/clothes" },
         { label: "Bluzy z kapturem i dresowe", link: "/men/ubrania/bluzy" },
         { label: "Kurtki", link: "/men/ubrania/kurtki" },
         { label: "Spodnie i legginsy", link: "/men/ubrania/spodnie" },
@@ -290,7 +291,7 @@ const Header = () => {
         {
           title: "Buty",
           items: [
-            { label: "Wszystkie buty", link: "/men/buty" },
+            { label: "Wszystkie buty", link: "/men/shoes" },
             { label: "Lifestyle", link: "/men/buty/lifestyle" },
             { label: "Jordan", link: "/men/buty/jordan" },
             { label: "Bieganie", link: "/men/buty/bieganie" },
@@ -304,7 +305,7 @@ const Header = () => {
         {
           title: "Ubrania",
           items: [
-            { label: "Wszystkie ubrania", link: "/men/ubrania" },
+            { label: "Wszystkie ubrania", link: "/men/clothes" },
             { label: "Bluzy z kapturem i dresowe", link: "/men/ubrania/bluzy" },
             { label: "Kurtki", link: "/men/ubrania/kurtki" },
             { label: "Spodnie i legginsy", link: "/men/ubrania/spodnie" },
